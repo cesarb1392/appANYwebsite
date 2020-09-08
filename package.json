@@ -20,20 +20,20 @@
     "lint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json",
     "lint-prettier": "node_modules/.bin/tslint-config-prettier-check ./tslint.json",
     "prettier-quick": "node_modules/.bin/pretty-quick --staged",
-    "build-all": "yarn tsc && ./node_modules/.bin/electron-builder --mac --win --x64 --ia32 -p always",
-    "build-linux": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --linux -p always",
-    "build-mac": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --mac -p always",
-    "build-win": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --win -p always"
+    "build-all": "yarn tsc && ./node_modules/.bin/electron-builder --mac --win --x64 --ia32 -p always --publish=never",
+    "build-linux": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --linux -p always --publish=never",
+    "build-mac": "yarn tsc && GH_TOKEN=366fe4bfbb247140c80e95d3fa8eabca45ec061a  ./node_modules/.bin/electron-builder --x64 --mac -p always",
+    "build-win": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --win -p always --publish=never"
   },
   "build": {
-    "appId": "com.electron.elect-file-manager.desktop",
+    "appId": "com.electron.app-any-website.desktop",
     "forceCodeSigning": false,
     "win": {
-      "icon": "./assets/favicon-win.ico",
+      "icon": "./assets/favicon.ico",
       "publisherName": "contact@cesarb.dev"
     },
     "mac": {
-      "icon": "./assets/favicon-mac.ico",
+      "icon": "./assets/favicon.ico",
       "category": "Utility",
       "target": [
         "dmg",
@@ -48,7 +48,6 @@
     }
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "path": "^0.12.7"
   },
   "devDependencies": {

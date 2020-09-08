@@ -1,8 +1,7 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
-
+import { CONFIG } from "./config";
 const { shell } = require("electron");
-require("dotenv").config();
 
 let mainWindow: Electron.BrowserWindow;
 
@@ -11,20 +10,20 @@ export const createWindow = (): void => {
     fullscreen: false,
     webPreferences: {
       nodeIntegration: false,
-      preload: path.resolve(path.join(__dirname, "/preload.js")),
+      preload: path.resolve(path.join(__dirname, "preload.js")),
     },
     titleBarStyle: "hidden",
-    title: "Banana App",
-    // backgroundColor: "",
-    width: parseInt(process.env.APP_HEIGHT),
-    height: parseInt(process.env.APP_HEIGHT),
-    icon: path.join(__dirname, "public", "assets", "favicon-mac.ico"),
+    title: CONFIG.APP_TITLE,
+    backgroundColor: CONFIG.APP_BACKGROUND_COLOR,
+    width: CONFIG.APP_WIDTH,
+    height: CONFIG.APP_HEIGHT,
+    icon: path.join(__dirname, "public", "assets", "favicon.ico"),
   });
-
   if (process.env.NODE_ENV === "development") {
+    if (CONFIG.ELECTRON_DISABLE_SECURITY_WARNINGS) {
+      process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
+    }
     mainWindow.webContents.openDevTools();
-  } else {
-    // process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = "1";
   }
 
   mainWindow.webContents.on("new-window", (e, url) => {
@@ -34,7 +33,7 @@ export const createWindow = (): void => {
   mainWindow.on("closed", (): void => {
     mainWindow = null;
   });
-  mainWindow.loadURL(process.env.START_URL).then((): void => {
+  mainWindow.loadURL(CONFIG.START_URL).then((): void => {
     mainWindow = null;
   });
 };
