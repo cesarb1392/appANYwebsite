@@ -22,7 +22,7 @@
     "prettier-quick": "node_modules/.bin/pretty-quick --staged",
     "build-all": "yarn tsc && ./node_modules/.bin/electron-builder --mac --win --x64 --ia32 -p always --publish=never",
     "build-linux": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --linux -p always --publish=never",
-    "build-mac": "yarn tsc && GH_TOKEN=366fe4bfbb247140c80e95d3fa8eabca45ec061a  ./node_modules/.bin/electron-builder --x64 --mac -p always",
+    "build-mac": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --mac -p always",
     "build-win": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --win -p always --publish=never"
   },
   "build": {
