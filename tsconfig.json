@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "lib": ["dom", "es2015.iterable"],
+    "allowJs": true,
+    "outDir": "bin",
+    "rootDir": "src",
+    "removeComments": false,
+    "strict": false,
+    "alwaysStrict": false,
+    "strictNullChecks": false,
+    "noEmitOnError": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": false,
+    "inlineSourceMap": false,
+    "inlineSources": false
+  },
+  "pretty": true,
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}

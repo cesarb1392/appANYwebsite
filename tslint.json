@@ -1,0 +1,25 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "jsRules": {
+    "no-implicit-dependencies": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "no-string-literal": true,
+    "member-ordering": false,
+    "variable-name": false,
+    "only-arrow-functions": false,
+    "object-literal-shorthand": false
+  },
+  "rules": {
+    "no-implicit-dependencies": true,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "no-string-literal": false,
+    "member-ordering": false,
+    "variable-name": false,
+    "only-arrow-functions": false,
+    "object-literal-shorthand": false
+  },
+  "rulesDirectory": []
+}

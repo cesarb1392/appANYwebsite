@@ -1,0 +1,75 @@
+{
+  "name": "app-any-website",
+  "author": {
+    "email": "contact@cesarb.dev",
+    "name": "César"
+  },
+  "version": "1.0.0",
+  "description": "app-any-website",
+  "homepage": "https://cesarb.dev/",
+  "main": "./bin/main.js",
+  "keywords": [
+    "electron",
+    "app",
+    "web"
+  ],
+  "scripts": {
+    "start": "yarn tsc && NODE_ENV=development node_modules/.bin/electron ./bin/main.js",
+    "tsc": "node_modules/.bin/tsc --project tsconfig.json",
+    "watch": "node_modules/.bin/tsc -p tsconfig.json --watch",
+    "lint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json",
+    "lint-prettier": "node_modules/.bin/tslint-config-prettier-check ./tslint.json",
+    "prettier-quick": "node_modules/.bin/pretty-quick --staged",
+    "build-all": "yarn tsc && ./node_modules/.bin/electron-builder --mac --win --x64 --ia32 -p always",
+    "build-linux": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --linux -p always",
+    "build-mac": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --mac -p always",
+    "build-win": "yarn tsc && ./node_modules/.bin/electron-builder --x64 --win -p always"
+  },
+  "build": {
+    "appId": "com.electron.elect-file-manager.desktop",
+    "forceCodeSigning": false,
+    "win": {
+      "icon": "./assets/favicon-win.ico",
+      "publisherName": "contact@cesarb.dev"
+    },
+    "mac": {
+      "icon": "./assets/favicon-mac.ico",
+      "category": "Utility",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "deb"
+      ]
+    }
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "electron": "^8.2.1",
+    "electron-builder": "^22.5.1",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.4",
+    "pretty-quick": "^2.0.1",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": "^13.x",
+    "npm": "6.x",
+    "yarn": "^1.10"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn tsc && yarn prettier-quick",
+      "pre-push": "yarn lint-prettier"
+    }
+  }
+}
